@@ -44,8 +44,8 @@ export default {
     return {
       //这是登录表单的数据绑定对象
       loginForm: {
-        username: "zs",
-        password: "123",
+        username: "admin",
+        password: "123456",
       },
       //这是表单的验证规则
       loginFormRules: {
@@ -75,8 +75,19 @@ export default {
     },
     //点击登录,进行表单验证
     login() {
-      this.$refs.loginFormRef.validate((valid) => {
-        console.log(valid);
+      this.$refs.loginFormRef.validate(async (valid) => {
+        // console.log(valid);
+        if (!valid) return;
+        const { data: res } = await this.$http.post("login", this.loginForm);
+        if (res.meta.status !== 200) return this.$message.error("登陆失败！");
+        this.$message.success("登录成功！");
+        //1.将登陆成功之后的token,保存到客户端的 sessionStorage中
+        //  1.1项目中除了登陆之外的其他API接口，必须在登陆之后才能访问
+        //  1.2token 只应在当前网站打开期间生效，所以将token 保存在 sessionStorage 中
+        console.log(res);
+        window.sessionStorage.setItem("token", res.data.token);
+        //2. 通过编程式导航跳转到后台主页，路由地址是 /home
+        this.$router.push("/home");
       });
     },
   },
