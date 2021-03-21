@@ -6,6 +6,7 @@ import Welcome from '@/components/Welcome'
 import Users from '@/components/user/Users'
 import Rights from '@/components/power/Rights'
 import Roles from '@/components/power/Roles'
+import Cate from '@/components/goods/Cate'
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,6 +20,7 @@ const routes = [
       { path: '/users', component: Users },
       { path: '/rights', component: Rights },
       { path: '/roles', component: Roles },
+      { path: '/categories', component: Cate },
     ]
   },
 ]
@@ -27,7 +29,7 @@ const router = new VueRouter({
   routes
 })
 
-//挂在路由导航守卫
+//挂载路由导航守卫
 router.beforeEach((to, from, next) => {
   //to将要访问的路径
   //from 代表从哪个路径跳转而来
@@ -38,6 +40,6 @@ router.beforeEach((to, from, next) => {
   //获取token
   const tokenStr = window.sessionStorage.getItem('token')
   if (!tokenStr) return next('/login')
-  next()
+  else next()
 })
 export default router
