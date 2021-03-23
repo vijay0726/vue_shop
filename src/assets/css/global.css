@@ -33,3 +33,6 @@ body,
 .el-cascader-menu{
  height: 200px !important;
 }
+.el-tag{
+margin: 7px;
+}
