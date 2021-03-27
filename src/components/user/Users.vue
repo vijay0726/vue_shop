@@ -312,13 +312,13 @@ export default {
     },
     //监听 pagesize 改变的事件
     handleSizeChange(newSize) {
-      console.log(newSize);
+      // console.log(newSize);
       this.queryInfo.pagesize = newSize;
       this.getUserList();
     },
     //监听页码值改变的事件
     handleCurrentChange(newPage) {
-      console.log(newPage);
+      // console.log(newPage);
       this.queryInfo.pagenum = newPage;
       this.getUserList();
     },
