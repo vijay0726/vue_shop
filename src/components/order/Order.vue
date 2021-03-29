@@ -138,7 +138,7 @@ export default {
       // 控制物流进度对话框的显示与隐藏
       progressVisible: false,
       // 物流进度
-      progressInfo: [],
+      // progressInfo: [],
     };
   },
   created() {
@@ -173,7 +173,7 @@ export default {
       this.$refs.addressFormRef.resetFields();
     },
     // 点击按钮，展示物流进度对话框
-    async showProgressBox() {
+    showProgressBox() {
       // 这个接口不可用了
 
       // const { data: res } = await this.$http.get("/kuaidi/1106975712662");
